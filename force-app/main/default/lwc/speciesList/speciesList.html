@@ -1,0 +1,59 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-align_absolute-center">
+        <lightning-button label="Add Specie" slot="actions" variant="brand" onclick={openModal}></lightning-button>
+        </div>
+
+        <!-- MODAL -->
+
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Species</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning-record-edit-form object-api-name="Species__c">
+                            <lightning-input-field field-name="Name" value={fieldsForm.Name} onchange={handleChangeName}></lightning-input-field>
+                            <lightning-input-field field-name="Description__c" value={fieldsForm.Description} onchange={handleChangeDescription}></lightning-input-field>
+                            <lightning-input-field field-name="Diet__c" value={fieldsForm.Diet} onchange={handleChangeDiet}></lightning-input-field>
+                            <lightning-input-field field-name="Image_url__c" value={fieldsForm.Image} onchange={handleChangeImage}></lightning-input-field>
+                            <lightning-input-field field-name="Characteristics__c" value={fieldsForm.Char} onchange={handleChangeChar}></lightning-input-field>
+                        </lightning-record-edit-form>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={saveRecord} title="Save">Save</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+                <!-- Loading Spinner-->
+    <template if:true={loading}>
+        <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+    </template>
+
+        <div class="slds-align_absolute-center">
+            <div class="slds-grid slds-wrap slds-grid_align-spread grid">
+                <template if:true={species.data}>
+                    <template for:each={species.data} for:item="specie">
+                        <div key={specie.Name}>
+                            <c-species-type
+                            specie={specie}
+                            class="slds-col slds-var-m-around_small"></c-species-type>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

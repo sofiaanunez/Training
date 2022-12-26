@@ -1,0 +1,97 @@
+<template>
+    <div class="slds-align_absolute-center">
+        <article class="slds-card">
+            <template if:true={isViewMode}>
+                <lightning-card class="slds-col slds-p-vertical_xx-small slds-size_1-of-1"
+                                icon-name="utility:work_forecast"
+                                title={specie.Name}>
+                
+                <lightning-button label="View Details" slot="actions" onclick={navigateToRecordViewPage}></lightning-button>
+                
+                <!-- edit button icon -->
+                <lightning-button-icon class="slds-m-around_none"
+                                        icon-name="action:edit"
+                                        onclick={switchForm}
+                                        variant="container"
+                                        slot="actions"
+                                        alternative-text="edit">
+                </lightning-button-icon> 
+                
+                <!-- view record data -->
+                <lightning-record-view-form record-id={specie.Id} 
+                                            object-api-name="Species__c">
+                    <div class="slds-m-horizontal_medium">
+                        <template for:each={fields} for:item="field">
+                            <div key={field.name}>
+                            <template if:true={field.label}>
+                                <lightning-output-field field-name={field.name} variant="label-hidden"></lightning-output-field>
+                            </template>
+                            <template if:false={field.label}>
+                                <lightning-output-field field-name={field.name}></lightning-output-field>
+                            </template>
+                        </div>
+                        </template>
+                    </div>
+                </lightning-record-view-form>             
+                </lightning-card>
+            </template>
+            
+            <!-- edit form -->
+            <template if:false={isViewMode}>
+                
+                <!-- edit record data -->
+                <lightning-record-edit-form record-id={specie.Id}
+                                            object-api-name="Species__c"
+                                            onsuccess={handleSuccess}
+                                            onerror={handleError}>
+                    <lightning-card class="slds-col slds-p-vertical_xx-small slds-size_1-of-1"
+                                                icon-name="utility:work_forecast"
+                                                title={specie.Name}>  
+                        
+                        <!-- save and cancel icons -->                                     
+                        <lightning-button-icon icon-name="action:remove" 
+                                                onclick={switchForm}  
+                                                variant="container"
+                                                slot="actions"
+                                                alternative-text="Cancel">
+                        </lightning-button-icon>    
+                        <lightning-button-icon icon-name="action:check" 
+                                                type="submit"  
+                                                variant="container"
+                                                slot="actions"
+                                                alternative-text="Save">
+                        </lightning-button-icon>            
+                        <div class="slds-m-horizontal_medium">
+                            <!-- input fields -->
+                            <template for:each={fields} for:item="field">
+                                <div key={field.name}>
+                                <template if:true={field.label}>
+                                    <div class="slds-form-element_label slds-no-flex">
+                                        {field.label}
+                                    </div>
+                                    <lightning-input-field field-name={field.name} variant="label-hidden"></lightning-input-field>
+                                </template>
+                                <template if:false={field.label}>
+                                    <lightning-input-field field-name={field.name}></lightning-input-field>
+                                </template>
+                            </div>
+                            </template>
+                        </div> 
+                    </lightning-card> 
+                </lightning-record-edit-form>                                   
+            </template>
+
+            <div class="specie slds-var-m-around_medium">
+                <img class="specie slds-align_absolute-center slds-var-m-around_medium" src={specie.Image_url__c} alt={specie.Name}></img>
+            </div>
+            <div class="slds-var-p-horizontal_small slds-align_absolute-center icons">
+                <template if:true={Seeds}>
+                    <lightning-icon icon-name="custom:custom5" alternative-text="EatSeeds" title="Seeds"></lightning-icon>
+                </template>        
+                <template if:true={Bugs}>
+                    <lightning-icon icon-name="custom:custom34" alternative-text="EatBugs" title="Bugs"></lightning-icon>
+                </template>      
+            </div>     
+        </article>
+    </div>
+</template>
