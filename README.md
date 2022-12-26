@@ -1,18 +1,9 @@
-# Salesforce DX Project: Next Steps
+Hay dos proyectos, un Quiz y otro llamado "Species Explorer".
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+El primero era para retomar el aprendizaje en LWC, lo único nuevo que aprendí de allí fue el "Spread Operator".
 
-## How Do You Plan to Deploy Your Changes?
+El segundo proyecto es mucho más interesante porque está la relación Padre a Hijo en LWC. En cada card llevo registro de aves que veo pasar por mi jardín y desde esa misma tarjeta podés editar la descripción de la especie. 
+Con el botón View Details te dirige a la pantalla para visualizar más datos de la especie.
+También se puede añadir una nueva especie a través de un modal. Una vez que guardas el registro, la pantalla se refresca y aparece la nueva especie.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Espero que les guste!
