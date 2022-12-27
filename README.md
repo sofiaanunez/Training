@@ -6,4 +6,6 @@ El segundo proyecto es mucho más interesante porque está la relación Padre a 
 Con el botón View Details te dirige a la pantalla para visualizar más datos de la especie.
 También se puede añadir una nueva especie a través de un modal. Una vez que guardas el registro, la pantalla se refresca y aparece la nueva especie.
 
+El de Species Explorer lo realicé siguiendo los tutoriales de Alba Rivas :) 
+
 Espero que les guste!
